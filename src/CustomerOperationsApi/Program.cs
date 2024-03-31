@@ -1,5 +1,8 @@
+using CustomerOperationsApi.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
