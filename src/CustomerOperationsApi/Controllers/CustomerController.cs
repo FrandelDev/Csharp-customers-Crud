@@ -1,6 +1,4 @@
-﻿using CustomerOperationsApi.Models;
-using CustomerOperationsApi.Services;
-using Microsoft.AspNetCore.Http;
+﻿using CustomerOperationsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerOperationsApi.Controllers
@@ -9,17 +7,11 @@ namespace CustomerOperationsApi.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly CustomerService _customerService;
-
-        public CustomerController(CustomerService customerService)
+       
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCustomer([FromServices]ICustomerService customerService, string id = "002-2345678-9")
         {
-            _customerService = customerService;
-        }
-
-        [HttpGet]
-        public IActionResult GetCustomer(string id)
-        {
-            var customer = _customerService.GetCustomerById(id);
+            var customer = await customerService.GetCustomerById(id);
             return Ok(customer);
         }
     }

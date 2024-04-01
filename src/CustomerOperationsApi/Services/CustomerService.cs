@@ -1,5 +1,4 @@
 ﻿using CustomerOperationsApi.Models;
-using System.Runtime.CompilerServices;
 
 namespace CustomerOperationsApi.Services
 {
@@ -36,9 +35,6 @@ namespace CustomerOperationsApi.Services
     }
         };
 
-        public CustomerModel GetCustomerById(string id)
-        {
-            return DefaultCustomers[0];
-        }
+        public async Task<CustomerModel> GetCustomerById(string id) => DefaultCustomers.FirstOrDefault(customer => customer.Id == id);//return "hola"+id;
     }
 }
