@@ -35,6 +35,6 @@ namespace CustomerOperationsApi.Services
     }
         };
 
-        public async Task<CustomerModel> GetCustomerById(string id) => DefaultCustomers.FirstOrDefault(customer => customer.Id == id);//return "hola"+id;
+        public async Task<CustomerModel> GetCustomerById(string id) => DefaultCustomers.FirstOrDefault(customer => customer.Id == id);
     }
 }
