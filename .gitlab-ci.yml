@@ -3,7 +3,7 @@ stages:
 
 test_proyect:
     stage: test
-    image: ubuntu/dotnet-aspnet:6.0_edge
+    image: bitnami/dotnet-sdk:6.0.420
     before_script:
         - dotnet restore
     script:
