@@ -24,7 +24,7 @@ namespace CustomerOperationsApi.Services
                 Success = false,
                 Message = message,
                 Data = data
-            }; ;
+            };
 
         }
     }
