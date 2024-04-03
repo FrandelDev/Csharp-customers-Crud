@@ -1,0 +1,11 @@
+stages:
+  - test
+
+test_proyect:
+    stage: test
+    image: ubuntu/dotnet-aspnet:6.0_edge
+    before_script:
+        - dotnet restore
+    script:
+        - dotnet build
+        - dotnet test
