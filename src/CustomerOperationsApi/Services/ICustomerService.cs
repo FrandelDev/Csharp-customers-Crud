@@ -4,6 +4,6 @@ namespace CustomerOperationsApi.Services
 {
     public interface ICustomerService
     {
-        Task<CustomerModel> GetCustomerById(string id);
+        Task<Customer> GetCustomerById(string id);
     }
 }

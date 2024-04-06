@@ -1,6 +1,6 @@
 ﻿namespace CustomerOperationsApi.Models
 {
-    public class ResponseApiModel
+    public class ResponseApi
     {
         public int StatusCode { get; set; }
         public bool Success { get; set; }
