@@ -1,13 +1,7 @@
 ﻿using CustomerOperationsApi.Controllers;
-using CustomerOperationsApi.Database.Commands.InsertCustomer;
 using CustomerOperationsApi.Database.Commands.UpdateCustomer;
 using CustomerOperationsApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomerOperationsTests
 {
@@ -46,7 +40,7 @@ namespace CustomerOperationsTests
                 }
             };
 
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand,defaultCustomer, "003-3456789-0");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-3456789-0");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(201, objectResult.StatusCode);
