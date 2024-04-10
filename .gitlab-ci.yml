@@ -1,0 +1,11 @@
+stages:
+  - test
+
+test_proyect:
+    stage: test
+    image: bitnami/dotnet-sdk:6.0.420
+    before_script:
+        - dotnet restore
+    script:
+        - dotnet build
+        - dotnet test

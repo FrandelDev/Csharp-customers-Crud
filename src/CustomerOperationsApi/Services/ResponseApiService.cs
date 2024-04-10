@@ -5,12 +5,12 @@ namespace CustomerOperationsApi.Services
     public static class ResponseApiService
     {
 
-        public static ResponseApiModel Response(int statusCode, string message=null, object data=null)
+        public static ResponseApi Response(int statusCode, string? message =default, object? data=default)
         {
            
             if (statusCode >= 200 && statusCode <= 300)
             {
-                return new ResponseApiModel()
+                return new ResponseApi()
                 {
                     StatusCode = statusCode,
                     Success = true,
@@ -18,7 +18,7 @@ namespace CustomerOperationsApi.Services
                     Data = data
                 };
             }
-            return new ResponseApiModel()
+            return new ResponseApi()
             {
                 StatusCode = statusCode,
                 Success = false,

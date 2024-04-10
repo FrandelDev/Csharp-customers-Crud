@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace CustomerOperationsApi.Validators.CustomerValidator
 {
-    public static class CustomerValidator
+    public static class ValidateCustomerId
     {
 
         public static ValidationResponse IsValid(string id)
@@ -15,21 +15,6 @@ namespace CustomerOperationsApi.Validators.CustomerValidator
             }
            
             return new ValidationResponse(true);
-        }
-    }
-
-
-     
-
-    public class ValidationResponse
-    {
-        public bool IsSuccess { get; set; }
-        public string Message { get; set; }
-
-        public ValidationResponse(bool success, string? message=null)
-        {
-            this.IsSuccess = success;
-            this.Message = message;
         }
     }
 }
