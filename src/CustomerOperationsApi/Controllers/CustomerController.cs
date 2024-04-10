@@ -16,6 +16,7 @@ namespace CustomerOperationsApi.Controllers
     [TypeFilter(typeof(ExceptionsManager))]
     public class CustomerController : ControllerBase
     {
+
         [HttpGet]
         public async Task<IActionResult> GetAllCustomers(
             [FromServices] IGetAllCustomers getAllCustomersQuery
@@ -24,8 +25,7 @@ namespace CustomerOperationsApi.Controllers
             try
             {
                 var allCustomers = await getAllCustomersQuery.Execute();
-
-                return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, "get all customers", allCustomers));
+                return StatusCode(StatusCodes.Status200OK, ResponseApiService.Response(StatusCodes.Status200OK, "getting all customers", allCustomers));
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace CustomerOperationsApi.Controllers
                     if (customer != null)
                     {
                         return StatusCode(StatusCodes.Status200OK,
-                                                ResponseApiService.Response(StatusCodes.Status200OK, "get customer by identification", customer));
+                                                ResponseApiService.Response(StatusCodes.Status200OK, "getting customer by identification", customer));
                     }
                     else
                     {

@@ -4,6 +4,7 @@ using CustomerOperationsApi.Database.Commands.UpdateCustomer;
 using CustomerOperationsApi.Database.Queries.GetAllCustomers;
 using CustomerOperationsApi.Database.Queries.GetCustomerById;
 using CustomerOperationsApi.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +19,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+Log.Logger = new LoggerConfiguration()
+                    .WriteTo.Console()
+                    .WriteTo.File("./Logs/logs-.txt", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
+
+builder.Host.UseSerilog();
+builder.Services.AddHttpLogging(o => { });
 
 var app = builder.Build();
 
+app.UseHttpLogging();
 
 if (app.Environment.IsDevelopment())
 {
