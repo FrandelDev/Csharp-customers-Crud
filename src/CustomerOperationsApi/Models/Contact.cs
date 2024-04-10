@@ -2,8 +2,8 @@
 {
     public class Contact
     {
-        public List<string> PhoneNumbers { get; set; }
-        public List<string> Emails { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Email { get; set; }
 
     }
 }

@@ -8,5 +8,6 @@
         public string SectorName { get; set; }
         public string PostalCode { get; set; }
     }
-    
+
+
 }
