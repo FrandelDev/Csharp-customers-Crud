@@ -57,7 +57,7 @@ namespace CustomerOperationsTests
         {
             Customer defaultCustomer = new()
             {
-                CustomerId = "000-0000000-0",
+                CustomerId = "003-3456789-0",
                 FirstName = "NameTest",
                 SecondName = "SecondNameTest",
                 LastName = null,
@@ -69,7 +69,7 @@ namespace CustomerOperationsTests
                 Address = null
             };
 
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "000-00000000");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-3456789-0");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(400, objectResult.StatusCode);
