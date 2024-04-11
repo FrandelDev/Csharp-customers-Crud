@@ -34,8 +34,6 @@ namespace CustomerOperationsTests
         [Fact]
         public async void GetAllCustomers_Return_ObjectList()
         {
-            var createDefaultCustomers = new GetAllCustomers();
-            createDefaultCustomers.Execute();
 
             var result = await _getAllCustomersQuery.Execute();
 
