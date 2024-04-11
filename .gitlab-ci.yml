@@ -10,8 +10,8 @@ test_proyect:
     before_script:
         - dotnet restore
         - dotnet build
-        - dotnet test
     script:
+        - dotnet test
         - dotnet test
 
         
