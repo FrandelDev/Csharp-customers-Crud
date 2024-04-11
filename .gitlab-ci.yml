@@ -9,8 +9,6 @@ test_proyect:
         alias: localhost
     before_script:
         - dotnet restore
-        - dotnet build
-        - dotnet test
     script:
       - dotnet build
       - dotnet test
