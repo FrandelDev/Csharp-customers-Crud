@@ -12,6 +12,5 @@ test_proyect:
         - dotnet build
     script:
         - dotnet test
-        - dotnet test
 
         
