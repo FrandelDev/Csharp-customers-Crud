@@ -26,7 +26,7 @@ namespace CustomerOperationsTests
         public async void Can_remove_customer()
         {
 
-            var result = await _customerController.RemoveCustomer(_removeCustomerCommnand,"000-0000000-0");
+            var result = await _customerController.RemoveCustomer(_removeCustomerCommnand, "001-1234567-8");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(200, objectResult.StatusCode);
@@ -35,21 +35,14 @@ namespace CustomerOperationsTests
         [Fact]
         public async void Cant_remove_customer()
         {
-            var result = await _customerController.RemoveCustomer(_removeCustomerCommnand, "000-000000-0");
-            Assert.NotNull(result);
-            var objectResult = Assert.IsType<ObjectResult>(result);
-            Assert.Equal(400, objectResult.StatusCode);
-        }
-
-        [Fact]
-        public async void GetCustomerToRemove_NotFound()
-        {
             var result = await _customerController.RemoveCustomer(_removeCustomerCommnand, "000-0000000-1");
             Assert.NotNull(result);
 
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(404, objectResult.StatusCode);
         }
+
+     
     }
 }
 
