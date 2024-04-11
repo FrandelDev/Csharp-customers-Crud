@@ -4,11 +4,13 @@ stages:
 test_proyect:
     stage: test
     image: bitnami/dotnet-sdk:6.0.420
+    services:
+      - redis:latest
     before_script:
         - dotnet restore
         - dotnet build
         - dotnet test
-
     script:
         - dotnet test
+
         
