@@ -4,8 +4,12 @@ stages:
 test_proyect:
     stage: test
     image: bitnami/dotnet-sdk:6.0.420
+    services:
+      - name: redis:latest
+        alias: localhost
     before_script:
         - dotnet restore
     script:
-        - dotnet build
-        - dotnet test
+      - dotnet test
+
+        
