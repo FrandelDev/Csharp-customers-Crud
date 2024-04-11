@@ -1,4 +1,5 @@
 using CustomerOperationsApi.Controllers;
+using CustomerOperationsApi.Database.Queries.GetAllCustomers;
 using CustomerOperationsApi.Database.Queries.GetCustomerById;
 using CustomerOperationsApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ namespace CustomerOperationsTests
     public class GetCustomerByIdTests
     {
         private readonly CustomerController _customerController;
-        private readonly GetCustomerById _getCustomerByIdQuery;
+        private readonly IGetCustomerById _getCustomerByIdQuery;
         public GetCustomerByIdTests()
         {
             _customerController = new CustomerController();
@@ -18,8 +19,10 @@ namespace CustomerOperationsTests
         [Fact]
         public async void GetCustomer_Ok()
         {
+            var createDefaultCustomers = new GetAllCustomers();
+            createDefaultCustomers.Execute();
 
-            var result = await _customerController.GetCustomerById(_getCustomerByIdQuery, "001-1234567-8");
+            var result = await _customerController.GetCustomerById(_getCustomerByIdQuery, "002-2345678-9");
             Assert.NotNull(result);
 
             var objectResult = Assert.IsType<ObjectResult>(result);

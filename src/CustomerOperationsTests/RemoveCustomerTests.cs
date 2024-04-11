@@ -1,6 +1,7 @@
 ﻿using CustomerOperationsApi.Controllers;
 using CustomerOperationsApi.Database.Commands.InsertCustomer;
 using CustomerOperationsApi.Database.Commands.RemoveCustomer;
+using CustomerOperationsApi.Database.Queries.GetAllCustomers;
 using CustomerOperationsApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,8 +26,10 @@ namespace CustomerOperationsTests
         [Fact]
         public async void Can_remove_customer()
         {
+            var createDefaultCustomers = new GetAllCustomers();
+            createDefaultCustomers.Execute();
 
-            var result = await _customerController.RemoveCustomer(_removeCustomerCommnand, "001-1234567-8");
+            var result = await _customerController.RemoveCustomer(_removeCustomerCommnand, "002-2345678-9");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(200, objectResult.StatusCode);

@@ -1,6 +1,7 @@
 ﻿using CustomerOperationsApi.Controllers;
 using CustomerOperationsApi.Database.Commands.InsertCustomer;
 using CustomerOperationsApi.Database.Commands.UpdateCustomer;
+using CustomerOperationsApi.Database.Queries.GetAllCustomers;
 using CustomerOperationsApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -122,6 +123,9 @@ namespace CustomerOperationsTests
                     SectorName = "SectorTest"
                 }
             };
+            var createDefaultCustomers = new GetAllCustomers();
+            createDefaultCustomers.Execute();
+
             var updateCustomerQuery = new UpdateCustomer();
             var result = await updateCustomerQuery.Execute(defaultCustomer, "002-2345678-9");
 
