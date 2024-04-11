@@ -8,12 +8,12 @@ namespace CustomerOperationsTests
 {
     public class UpdateCustomerTests
     {
-        private readonly IUpdateCustomer _updateCustomerCommnand;
+        private readonly IUpdateCustomer _updateCustomerCommand;
         private readonly CustomerController _customerController;
 
         public UpdateCustomerTests()
         {
-            _updateCustomerCommnand = new UpdateCustomer();
+            _updateCustomerCommand = new UpdateCustomer();
             _customerController = new CustomerController();
         }
 
@@ -41,7 +41,7 @@ namespace CustomerOperationsTests
                 }
             };
 
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-3456789-0");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommand, defaultCustomer, "003-3456789-0");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(201, objectResult.StatusCode);
@@ -63,8 +63,10 @@ namespace CustomerOperationsTests
                 Contacts = null,
                 Address = null
             };
+            var createDefaultCustomers = new GetAllCustomers();
+            createDefaultCustomers.Execute();
 
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-34567890");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommand, defaultCustomer, "003-34567890");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(400, objectResult.StatusCode);
@@ -86,7 +88,7 @@ namespace CustomerOperationsTests
                 Contacts = null,
                 Address = null
             };
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "000-0000000-1");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommand, defaultCustomer, "000-0000000-1");
             Assert.NotNull(result);
 
             var objectResult = Assert.IsType<ObjectResult>(result);

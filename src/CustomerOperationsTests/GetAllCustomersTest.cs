@@ -24,6 +24,7 @@ namespace CustomerOperationsTests
         [Fact]
         public async void GetAllCustomers_Ok()
         {
+
             var result = await _customerController.GetAllCustomers(_getAllCustomersQuery);
             Assert.NotNull(result);
 
