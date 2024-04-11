@@ -19,7 +19,7 @@ namespace CustomerOperationsTests
         public async void GetCustomer_Ok()
         {
 
-            var result = await _customerController.GetCustomerById(_getCustomerByIdQuery, "003-3456789-0");
+            var result = await _customerController.GetCustomerById(_getCustomerByIdQuery, "001-1234567-8");
             Assert.NotNull(result);
 
             var objectResult = Assert.IsType<ObjectResult>(result);

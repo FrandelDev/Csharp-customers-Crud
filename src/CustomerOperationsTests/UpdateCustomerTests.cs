@@ -69,7 +69,7 @@ namespace CustomerOperationsTests
                 Address = null
             };
 
-            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-3456789-0");
+            var result = await _customerController.UpdateCustomer(_updateCustomerCommnand, defaultCustomer, "003-34567890");
             Assert.NotNull(result);
             var objectResult = Assert.IsType<ObjectResult>(result);
             Assert.Equal(400, objectResult.StatusCode);
@@ -80,7 +80,7 @@ namespace CustomerOperationsTests
         {
             Customer defaultCustomer = new()
             {
-                CustomerId = "000-0000000-0",
+                CustomerId = "000-0000000-1",
                 FirstName = "NameTest",
                 SecondName = "SecondNameTest",
                 LastName = null,
@@ -104,19 +104,26 @@ namespace CustomerOperationsTests
         {
             Customer defaultCustomer = new()
             {
-                CustomerId = "000-0000000-0",
-                FirstName = "NameTest",
+                CustomerId = "002-2345678-9",
+                FirstName = "NameTest ",
                 SecondName = "SecondNameTest",
-                LastName = null,
+                LastName = "LastNameTest",
                 SecondLastName = "SecondLastNameTest",
                 Nationality = "NationalityTest",
                 Gender = "M",
-                BirthDate = DateTime.UtcNow,
-                Contacts = null,
-                Address = null
+                BirthDate = DateTime.Parse("02-12-1999"),
+                Contacts = new List<Contact> { new Contact { Email = "email@test.com", PhoneNumber = "000-000-0000" } },
+                Address = new Address
+                {
+                    CityName = "CityTest",
+                    CountryName = "CountryNameTest",
+                    PostalCode = "12345",
+                    RegionName = "RegionTest",
+                    SectorName = "SectorTest"
+                }
             };
             var updateCustomerQuery = new UpdateCustomer();
-            var result = await updateCustomerQuery.Execute(defaultCustomer, "003-3456789-0");
+            var result = await updateCustomerQuery.Execute(defaultCustomer, "002-2345678-9");
 
             Assert.NotNull(result);
             Assert.IsType<Customer>(result);
