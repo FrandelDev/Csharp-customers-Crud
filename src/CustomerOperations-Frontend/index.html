@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Operations</title>
+    <script src="./scripts/index.js" type="module" defer></script>
+</head>
+
+<body>
+    <section id="btns">
+        <button>Get All</button>
+        <button>Get One</button>
+        <button>Create</button>
+        <button>Update</button>
+        <button>Delete</button>
+    </section>
+    <form>
+        <label for="IdCardNumber" id="IdCardNumber">
+            Identification Card Number:
+            <input type="text" id="IdCardNumberInput" placeholder="000-0000000-0">
+        </label><br>
+
+        <label for="NameInput">
+            First Name:
+            <input type="text" id="NameInput">
+        </label><br>
+
+        <label for="SecondNameInput">
+            Second Name:
+            <input type="text" id="SecondNameInput">
+        </label><br>
+
+        <label for="FLastNameInput">
+            First Last Name:
+            <input type="text" id="FLastNameInput">
+        </label><br>
+
+        <label for="SLastNameInput">
+            Second Last Name:
+            <input type="text" id="SLastNameInput">
+        </label><br>
+
+        <label for="Nationality">
+            Nationality:
+            <input type="text" id="Nationality">
+        </label><br>
+
+        <label for="date">
+            Birth Date:
+            <input type="date" id="date" required>
+        </label><br>
+
+        <div id="gender">
+            <p>Gender: </p>
+            <label for="Female">
+                Female:
+                <input type="radio" name="gender" id="Female">
+            </label>
+
+            <label for="Male">
+                Male:
+                <input type="radio" name="gender" id="Male">
+            </label>
+        </div><br>
+
+        <div id="Contacts">
+            For Contact:
+            <div class="contact">
+                <label for="phone">
+                    Phone Number:
+                    <input type="tel" id="phone">
+                </label><br>
+
+                <label for="email">
+                    E-mail:
+                    <input type="email" id="email">
+                </label>
+            </div>
+            <input type="button" value="+" id="btn-add">
+        </div><br>
+
+        <div id="address">
+            <p>Address: </p>
+            <label for="country">
+                Country Name:
+                <input type="text" id="country">
+            </label><br>
+
+            <label for="city">
+                City Name:
+                <input type="text" id="city">
+            </label><br>
+
+            <label for="region">
+                Region Name: 
+                <input type="text" id="region">
+            </label><br>
+
+            <label for="sector">
+                Sector Name: 
+                <input type="text" id="sector">
+            </label><br>
+
+            <label for="postal">
+            Postal Code: 
+                <input type="text" id="postal">
+            </label>
+        </div>
+        <input type="submit" value="Send" id="btn-send">
+    </form>
+    <section id="Results">
+        <details>
+            <summary>Name Last</summary>
+            <ul>
+                <li><b>ffa: </b>sfasdf</li>
+                <li><b>ffa: </b>
+                    <ol><b>ffa: </b>fdf</ol>
+                    <ol><b>ffa: </b>fdf</ol>
+                    <ol><b>ffa: </b>fdf</ol>
+                </li>
+                
+            </ul>
+        </details>
+    </section>
+</body>
+
+</html>

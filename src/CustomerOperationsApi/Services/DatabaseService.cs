@@ -17,7 +17,7 @@ namespace CustomerOperationsApi.Services
         static DatabaseService()
         {
             _connectionMultiplexer = new Lazy<ConnectionMultiplexer>(() =>
-            ConnectionMultiplexer.Connect("localhost")
+            ConnectionMultiplexer.Connect("redis:6379")
             ) ;
         }
 
