@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Operations</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
+
     <script src="./scripts/index.js" type="module" defer></script>
 </head>
 
 <body>
     <section id="btns">
-        <button>Get All</button>
-        <button>Get One</button>
-        <button>Create</button>
-        <button>Update</button>
-        <button>Delete</button>
+        <button id="get-all">Get All</button>
+        <button id="get-one">Get One</button>
+        <button id="create">Create</button>
+        <button id="update">Update</button>
+        <button id="delete">Delete</button>
     </section>
     <form>
         <label for="IdCardNumber" id="IdCardNumber">
@@ -110,19 +113,8 @@
         </div>
         <input type="submit" value="Send" id="btn-send">
     </form>
+    
     <section id="Results">
-        <details>
-            <summary>Name Last</summary>
-            <ul>
-                <li><b>ffa: </b>sfasdf</li>
-                <li><b>ffa: </b>
-                    <ol><b>ffa: </b>fdf</ol>
-                    <ol><b>ffa: </b>fdf</ol>
-                    <ol><b>ffa: </b>fdf</ol>
-                </li>
-                
-            </ul>
-        </details>
     </section>
 </body>
 

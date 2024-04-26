@@ -1,6 +1,4 @@
-import { GetAllCustomers } from "./GetAllCustomers.js";
-import {addContact,buildCostumer} from "./PostCustomer.js"
+import "./GetAllCustomers.js";
+import "./PostCustomer.js"
+import "./GetOneCustomer.js";
 
-document.querySelector('form').addEventListener('submit',(event) => event.preventDefault());
-
-GetAllCustomers();

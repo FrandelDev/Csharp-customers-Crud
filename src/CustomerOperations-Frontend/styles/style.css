@@ -1,0 +1,11 @@
+
+
+form{
+    display: none;
+}
+
+#Results{
+    border-top: 1px solid rgba(0, 0, 0, 0.26);
+    margin-top: 10px;
+    padding-top: 10px;
+}

@@ -1,8 +1,14 @@
+import { clear } from "./clear.js";
 
+const form = document.querySelector("form");
 const resultSection = document.querySelector("#Results");
+const btnGetAll = document.querySelector("#get-all");
 const url = "http://localhost:5001/api/Customer";
 
+
+btnGetAll.addEventListener('click',GetAllCustomers)
 async function GetAllCustomers(){
+    clear();
     const response = await fetch(url,{
         method: "GET",
         headers:{
@@ -60,8 +66,6 @@ async function GetAllCustomers(){
 
         `
     });
-    console.log(customers);
-
 }
 
 export {GetAllCustomers}

@@ -1,5 +1,9 @@
+import { clear } from "./clear.js";
+
+const form = document.querySelector("form");
 const btnSend = document.querySelector("#btn-send");
 const btnAdd = document.querySelector("#btn-add");
+const btnCreate = document.querySelector("#create");
 const IdCardNumberInput = document.querySelector("#IdCardNumberInput");
 const NameInput = document.querySelector("#NameInput");
 const SecondNameInput = document.querySelector("#SecondNameInput");
@@ -32,7 +36,12 @@ const customerToSend ={
       "postalCode": ""
     }
   }
-  btnSend.addEventListener('click',postCustomer)
+
+  form.addEventListener('submit',(event) => event.preventDefault());
+
+  btnCreate.addEventListener('click',()=> {clear(); form.style.display = "block"});
+
+  btnSend.addEventListener('click',postCustomer);
 async function postCustomer(){
     const url = "http://localhost:5001/api/Customer";
     buildCostumer();
@@ -50,7 +59,15 @@ async function postCustomer(){
                 throw new Error(error.message);
               });
             } else {
-              return res.json();
+                Array.from(form.elements).forEach(element =>{
+                    if(element.value == '' && element.hasAttribute("required")){
+                        return;
+                    }
+                    
+                  });
+                  form.reset();
+                  clear();
+                  return res.json();
             }
           })
           .catch(error => {
