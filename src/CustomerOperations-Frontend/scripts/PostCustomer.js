@@ -1,3 +1,4 @@
+import {CustomerRender} from "./CustomerRender.js"
 import { clear } from "./clear.js";
 
 const form = document.querySelector("form");
@@ -41,12 +42,12 @@ const customerToSend ={
 
   btnCreate.addEventListener('click',()=> {clear(); form.style.display = "block"});
 
-  btnSend.addEventListener('click',postCustomer);
+btnSend.addEventListener('click',postCustomer);
 async function postCustomer(){
     const url = "http://localhost:5001/api/Customer";
     buildCostumer();
     
-       await fetch(url,{
+     const customer =  await fetch(url,{
             method: "POST",
             headers:{
                 "Content-Type": "application/json; charset=utf-8"
@@ -73,6 +74,8 @@ async function postCustomer(){
           .catch(error => {
             console.error('Error:', error.message);
           });
+        
+          CustomerRender(customer.data,true);
     }
    
     
@@ -126,4 +129,3 @@ function buildCostumer(){
     customerToSend.address.sectorName = sector.value
     customerToSend.address.postalCode = postal.value
 }
-export {postCustomer,addContact,buildCostumer}
