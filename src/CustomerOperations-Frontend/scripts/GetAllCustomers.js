@@ -8,6 +8,7 @@ const url = "http://localhost:5001/api/Customer";
 
 btnGetAll.addEventListener('click',GetAllCustomers)
 async function GetAllCustomers(){
+    form.style.display = "none";
     clear();
     const response = await fetch(url,{
         method: "GET",

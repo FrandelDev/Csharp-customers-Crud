@@ -1,5 +1,6 @@
 import { clear } from "./clear.js";
 
+const form = document.querySelector("form");
 const resultSection = document.querySelector("#Results");
 const btns = document.querySelector("#btns");
 
@@ -50,9 +51,10 @@ function CustomerRender(customer,isOpen){
 
      `
 }
-function RenderInput(btn,fn){
+function RenderSearchInput(btn,fn){
 btn.addEventListener('click',Render)
 function Render(){
+    form.style.display = "none";
     clear()
     btns.insertAdjacentHTML("afterend",`
     <label for="IdCardNumberInputGenerated" id="IdCardNumberGenerated">
@@ -65,4 +67,4 @@ function Render(){
 }
 }
 
-export {CustomerRender, RenderInput}
+export {CustomerRender, RenderSearchInput}

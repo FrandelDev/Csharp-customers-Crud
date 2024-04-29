@@ -4,6 +4,7 @@ import { clear } from "./clear.js";
 const form = document.querySelector("form");
 const btnSend = document.querySelector("#btn-send");
 const btnAdd = document.querySelector("#btn-add");
+const btnRest = document.querySelector("#btn-rest");
 const btnCreate = document.querySelector("#create");
 const IdCardNumberInput = document.querySelector("#IdCardNumberInput");
 const NameInput = document.querySelector("#NameInput");
@@ -18,6 +19,8 @@ const city = document.querySelector("#city");
 const region = document.querySelector("#region");
 const sector = document.querySelector("#sector");
 const postal = document.querySelector("#postal");
+
+
 
 const customerToSend ={
     "customerId": "",
@@ -40,13 +43,17 @@ const customerToSend ={
 
   form.addEventListener('submit',(event) => event.preventDefault());
 
-  btnCreate.addEventListener('click',()=> {clear(); form.style.display = "block"});
+  btnCreate.addEventListener('click',()=> {
+  clear();
+  form.style.display = "block";
+  form.reset();
+    btnSend.addEventListener('click',postCustomer);
+  });
 
-btnSend.addEventListener('click',postCustomer);
 async function postCustomer(){
     const url = "http://localhost:5001/api/Customer";
     buildCostumer();
-    
+    clear();
      const customer =  await fetch(url,{
             method: "POST",
             headers:{
@@ -64,10 +71,9 @@ async function postCustomer(){
                     if(element.value == '' && element.hasAttribute("required")){
                         return;
                     }
-                    
                   });
-                  form.reset();
                   clear();
+                  form.reset();
                   return res.json();
             }
           })
@@ -76,6 +82,8 @@ async function postCustomer(){
           });
         
           CustomerRender(customer.data,true);
+
+        btnSend.removeEventListener('click',postCustomer);
     }
    
     
@@ -96,6 +104,13 @@ function addContact(){
             </div>
     `);
 }
+
+btnRest.addEventListener('click',restContact);
+function restContact(){
+    const contactInputList = document.querySelectorAll('.contact');
+    contactInputList.length > 1 ? document.querySelector('#Contacts').removeChild(contactInputList[1]) : '';
+}
+
 function buildContactObjects(){
     const contactsSet = [];
     const contactNodes = Array.from(document.querySelector("#Contacts").childNodes).filter(node => node.localName == 'div');
@@ -128,4 +143,9 @@ function buildCostumer(){
     customerToSend.address.regionName = region.value
     customerToSend.address.sectorName = sector.value
     customerToSend.address.postalCode = postal.value
+
+    return customerToSend;
 }
+
+
+export {addContact, restContact, buildCostumer}
