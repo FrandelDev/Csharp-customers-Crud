@@ -97,5 +97,5 @@ async function fillAllFields(event,id =  document.querySelector("#IdCardNumberIn
  
 
   }
-  RenderSearchInput(btnUpdate,fillAllFields)
+  RenderSearchInput(btnUpdate,fillAllFields);
   
