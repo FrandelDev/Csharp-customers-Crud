@@ -2,7 +2,6 @@ import { clear } from "./clear.js";
 
 const form = document.querySelector("form");
 const resultSection = document.querySelector("#Results");
-const btns = document.querySelector("#btns");
 
 function CustomerRender(customer,isOpen){
     const contactFilter = customer.contacts.reduce((accumulator,current)=>{
@@ -29,16 +28,17 @@ function CustomerRender(customer,isOpen){
          <li><b>Nationality: </b>${customer.nationality}</li>
          <li><b>Gender: </b>${customer.gender}</li>
          <li><b>Birth Date: </b>${customer.birthDate.slice(0,10)}</li>
-         <li><b>Address: </b>
-             <ol>
+         <br>
+         <li><b>Address: </b>─┐
+               <ol>
                  <b>Country:</b> ${customer.address.countryName}<br>
                  <b>City:</b> ${customer.address.cityName}<br>
                  <b>Region:</b> ${customer.address.regionName}<br>
                  <b>Sector:</b> ${customer.address.sectorName}<br>
                  <b>Postal Code:</b> ${customer.address.postalCode}
-             </ol>
+               </ol>
          </li><br>
-         <li><b>For Contact: </b>
+         <li><b>For Contact: </b>─┐
                  <ol>
                  <b>Phone Numbers: </b>${contactFilter.phoneNumbers.map(x => ' '+x)}<br>
                  </ol>
@@ -56,7 +56,7 @@ btn.addEventListener('click',Render)
 function Render(){
     form.style.display = "none";
     clear()
-    btns.insertAdjacentHTML("afterend",`
+    resultSection.insertAdjacentHTML("beforebegin",`
     <label for="IdCardNumberInputGenerated" id="IdCardNumberGenerated">
     Identification Card Number:
     <input type="text" id="IdCardNumberInputGenerated" placeholder="000-0000000-0">
