@@ -9,4 +9,3 @@
 src/CustomerOperationsApi/Logs/
 launchSettings.json
 docker-compose.override.yml
-docker-compose.dcproj
