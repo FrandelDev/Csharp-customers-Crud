@@ -1,5 +1,6 @@
 import {CustomerRender} from "./CustomerRender.js"
 import { UpdateCustomer } from "./UpdateCustomer.js";
+import { popupNotification } from "./Notify.js";
 import { clear } from "./clear.js";
 
 const form = document.querySelector("form");
@@ -47,6 +48,7 @@ const customerToSend ={
 
   btnCreate.addEventListener('click',()=> {
     btnSend.removeEventListener('click',UpdateCustomer);
+    document.querySelector("#title").innerText = "Create New Customer";
   clear();
   form.style.display = "grid";
   document.querySelector('input[type="submit"]').style.backgroundColor = "var(--option-create)";
@@ -57,8 +59,16 @@ const customerToSend ={
 
 async function postCustomer(){
     const url = "http://localhost:5001/api/Customer";
+
+    Array.from(form.elements).forEach(element =>{
+      if(element.value == '' && element.hasAttribute("required")){
+          return;
+      }
+    });
+    
     buildCostumer();
     clear();
+    
      const customer =  await fetch(url,{
             method: "POST",
             headers:{
@@ -69,14 +79,12 @@ async function postCustomer(){
         .then(res => {
             if (!res.ok) {
               return res.json().then(error => {
+                popupNotification(`${error.message == undefined ? 'Please complete required field.' : error.message}`,"error");
                 throw new Error(error.message);
               });
             } else {
-                Array.from(form.elements).forEach(element =>{
-                    if(element.value == '' && element.hasAttribute("required")){
-                        return;
-                    }
-                  });
+                
+                  popupNotification("New Customer Added.");
                   btnSend.removeEventListener('click',postCustomer);
                   clear();
                   form.reset();
@@ -86,7 +94,7 @@ async function postCustomer(){
           .catch(error => {
             console.error('Error:', error.message);
           });
-        
+          document.querySelector('#Results').innerHTML = '';
           CustomerRender(customer.data,true);
     }
    

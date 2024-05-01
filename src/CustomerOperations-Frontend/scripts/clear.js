@@ -1,10 +1,9 @@
 
-const form = document.querySelector("form");
 const resultSection = document.querySelector("#Results");
 const searchInput = document.querySelector("#IdCardNumberInput");
-const btnSend = document.querySelector("#btn-send");
+
 function clear(){
-    resultSection.innerHTML ='';
+    resultSection.innerHTML ='<h1>No results, waiting for data to be displayed</h1>';
     const existingNode = document.querySelector('#IdCardNumberGenerated');
     if(existingNode) existingNode.remove();
     searchInput.value ='';

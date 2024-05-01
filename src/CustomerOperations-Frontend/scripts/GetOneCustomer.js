@@ -1,4 +1,6 @@
+
 import { CustomerRender, RenderSearchInput } from "./CustomerRender.js";
+import { popupNotification } from "./Notify.js";
 
 
 const btnGetOne = document.querySelector("#get-one");
@@ -8,14 +10,27 @@ async function GetOneCustomer(event ={}, id =  document.querySelector("#IdCardNu
     if (event.preventDefault) {
         event.preventDefault();
       }
-        const res = await fetch(url+id);
-        const customer = await res.json()
-
+        const customer = await fetch(url+id)
+        .then(res => {
+          if(!res.ok){
+            return res.json().then(error =>{
+              popupNotification(`${res.status == '404' ? "Customer Not Found" : error.message}`,'error');
+              document.querySelector('form').style.display='none';
+              
+              throw new Error(error.message);
+            });
+          }
+          else{
+            return res.json();
+          }
+        })
+          .catch(error => console.log('Error: '+error.message));
+          document.querySelector('#Results').innerHTML = '';
         CustomerRender(customer.data,true);
         return customer.data;
     }
 
 
-    RenderSearchInput(btnGetOne,GetOneCustomer);
+    RenderSearchInput(btnGetOne,GetOneCustomer,"Get Customer");
 
 export{GetOneCustomer}

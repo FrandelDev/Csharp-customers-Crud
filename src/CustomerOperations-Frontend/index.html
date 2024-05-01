@@ -13,27 +13,27 @@
 
 <body>
     <section id="btns">
-        <h1>Customer Operations</h1>
+        <h1 onclick="location.reload()" style="cursor: pointer;">Customer Operations</h1>
         <button id="get-all">Get All</button>
         <button id="get-one">Get One</button>
         <button id="create">Create</button>
         <button id="update">Update</button>
         <button id="delete">Delete</button>
     </section>
-    <div>
-        <h2 id="title">title</h2>
+    <div id="views-container">
+        <h2 id="title"> </h2>
         <section id="views">
         <form>
             <div id="form1">
 
                 <label for="IdCardNumberInput" id="IdCardNumber">
                     <p>Identification Card Number:</p>
-                    <input type="text" id="IdCardNumberInput" placeholder="000-0000000-0">
+                    <input type="text"  id="IdCardNumberInput" placeholder="000-0000000-0">
                 </label><br>
                 
                 <label for="NameInput">
                    <p>First Name:</p> 
-                    <input type="text" id="NameInput">
+                    <input type="text" id="NameInput" required>
                 </label><br>
                 
                 <label for="SecondNameInput">
@@ -43,7 +43,7 @@
                 
                 <label for="FLastNameInput">
             <p>First Last Name:</p>
-            <input type="text" id="FLastNameInput">
+            <input type="text" id="FLastNameInput" required>
         </label><br>
         
         <label for="SLastNameInput">
@@ -53,7 +53,7 @@
         
         <label for="Nationality">
             <p>Nationality:</p>
-            <input type="text" id="Nationality">
+            <input type="text" id="Nationality" required>
         </label><br>
         
         <label for="date">
@@ -67,7 +67,7 @@
             <p><b>Gender</b></p>
             <label for="Female">
                 Female:
-                <input type="radio" name="gender" id="Female">
+                <input type="radio" name="gender" id="Female" required>
             </label>
             
             <label for="Male">
@@ -82,11 +82,11 @@
                 <div class="contact">
                     <label for="phone">
                         Phone Number
-                        <input type="tel" id="phone">
+                        <input type="tel" id="phone" required>
                     </label>  
                     <label for="email">
                         E-mail:
-                        <input type="email" id="email">
+                        <input type="email" id="email" required>
                     </label>
                 </div>
             </div>
@@ -100,27 +100,27 @@
             <p><b>                Address </b></p>
             <label for="country">
                 Country Name:
-                <input type="text" id="country">
+                <input type="text" id="country" required>
             </label><br>
             
             <label for="city">
                 City Name:
-                <input type="text" id="city">
+                <input type="text" id="city" required>
             </label><br>
 
             <label for="region">
                 Region Name: 
-                <input type="text" id="region">
+                <input type="text" id="region" required>
             </label><br>
             
             <label for="sector">
                 Sector Name: 
-                <input type="text" id="sector">
+                <input type="text" id="sector" required>
             </label><br>
             
             <label for="postal">
                 Postal Code: 
-                <input type="text" id="postal">
+                <input type="text" id="postal" required>
             </label>
         </div>
     </div>
@@ -128,6 +128,7 @@
     </form>
     
     <section id="Results">
+        <h1>Choose an option to get started</h1>
     </section>
 </section>
 </div>

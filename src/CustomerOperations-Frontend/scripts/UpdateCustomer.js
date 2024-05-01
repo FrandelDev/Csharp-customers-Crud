@@ -1,5 +1,6 @@
 import { CustomerRender, RenderSearchInput } from "./CustomerRender.js";
 import { GetOneCustomer } from "./GetOneCustomer.js";
+import { popupNotification } from "./Notify.js";
 import { addContact, buildCostumer} from "./PostCustomer.js";
 import { clear } from "./clear.js";
 
@@ -37,15 +38,17 @@ async function UpdateCustomer(){
   .then(res => {
     if(!res.ok){
       return res.json().then( error =>{
+        popupNotification(`${error.message}`,"error");
         throw new Error("Error: "+ error.message)
       });
     }
     else{
       Array.from(form.elements).forEach(element =>{
         if(element.value == '' && element.hasAttribute("required")){
-            return;
+          return;
         }
       });
+      popupNotification("Changes successfully applied.");
       btnSend.removeEventListener('click',UpdateCustomer);
       clear();
       form.reset();
@@ -54,11 +57,17 @@ async function UpdateCustomer(){
     }
   })
   .catch(error => console.error(error.message));
+  document.querySelector('#Results').innerHTML = '';
   CustomerRender(response.data,true);
   
 }
 
 async function fillAllFields(event,id =  document.querySelector("#IdCardNumberInputGenerated").value){
+  if(document.querySelector('#IdCardNumberInputGenerated').value == ''){
+    popupNotification("No search criteria, ID field is Empty",'error');
+    return;
+  }
+  
   clear();
   form.style.display = "grid";
   document.querySelector('input[type="submit"]').style.backgroundColor = "var(--option-update)";
@@ -100,6 +109,6 @@ async function fillAllFields(event,id =  document.querySelector("#IdCardNumberIn
  
 
   }
-  RenderSearchInput(btnUpdate,fillAllFields);
+  RenderSearchInput(btnUpdate,fillAllFields,"Update Customer");
   
   export {UpdateCustomer}

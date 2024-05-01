@@ -4,6 +4,7 @@ const form = document.querySelector("form");
 const resultSection = document.querySelector("#Results");
 
 function CustomerRender(customer,isOpen){
+
     const contactFilter = customer.contacts.reduce((accumulator,current)=>{
            
         if(current.email != null && current.email != ''){
@@ -51,7 +52,7 @@ function CustomerRender(customer,isOpen){
 
      `
 }
-function RenderSearchInput(btn,fn){
+function RenderSearchInput(btn,fn,title){
 btn.addEventListener('click',Render)
 function Render(){
     form.style.display = "none";
@@ -59,11 +60,12 @@ function Render(){
     resultSection.insertAdjacentHTML("beforebegin",`
     <label for="IdCardNumberInputGenerated" id="IdCardNumberGenerated">
     Identification Card Number:
-    <input type="text" id="IdCardNumberInputGenerated" placeholder="000-0000000-0">
+    <input type="text" id="IdCardNumberInputGenerated" placeholder="000-0000000-0" required>
     <button id="btn-search">Search</button>
     </label>
     `);
    document.querySelector("#btn-search").addEventListener('click',fn);
+   document.querySelector("#title").innerText = title;
 }
 }
 

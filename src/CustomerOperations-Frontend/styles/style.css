@@ -185,6 +185,7 @@ input[type="submit"]{
     color: #fff;
     border-color: transparent;
     background-color: var(--option-create);
+    cursor: pointer;
 }
 #btn-delete{
 position: absolute;
@@ -208,7 +209,20 @@ cursor: pointer;
     padding-left: 50px;
     margin-top: 20px;
 }
-
+#Results h1{
+    grid-area: 1/2;
+    text-align: center;
+    width: max-content;
+    max-width: 500px;
+    padding: 30px;
+    margin-top: 100px;
+    margin-right: 50px;
+    font-size: 36px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: #fff;
+    background-color: rgba(211, 211, 211, 0.568);
+}
 #Results details > summary{
     width: 110px;
     padding: 3.5px 8px 0px 8px;
@@ -244,4 +258,55 @@ cursor: pointer;
 #Results details > ul > li{
     display: block;
     text-decoration: none;
+}
+
+#successMsg{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    height: fit-content;
+    min-height: 65px;
+    max-height: 130px;
+    padding-right: 10px;
+    font-family: sans-serif;
+    color: #fff;
+    background-color: var(--option-create);
+    z-index: 4;
+}
+#successMsg img{
+    width: 45px;
+    margin: 10px;
+}
+#successMsg p{
+    width: 300px;
+    overflow-wrap: break-word;
+}
+#errorMsg{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+    height: fit-content;
+    min-height: 65px;
+    max-height: 130px;
+    padding-right: 10px;
+    font-family: sans-serif;
+    color: #fff;
+    background-color: var(--option-delete);
+    z-index: 4;
+}
+#errorMsg img{
+    width: 45px;
+    margin: 10px;
+}
+#errorMsg p{
+    width: 300px;
+    overflow-wrap: break-word;
 }
