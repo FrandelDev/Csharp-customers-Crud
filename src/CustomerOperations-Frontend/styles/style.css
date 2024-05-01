@@ -104,25 +104,113 @@ body > div > #title{
 #btns button:nth-child(6){
     background-color: var(--option-delete);
 }
-
-form{
+#views{position: relative;}
+#views form{
     display: none;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    width: 95%;
+    padding-top: 20px;
+    font-family: sans-serif;
+    font-size: 13px;
+    border-top: 1px solid rgba(0, 0, 0, 0.26);
+}
+#views form div input {
+    height: 20px;
+    border: solid lightgray;
+    border-radius: 8px;
+}
+#views form div input:focus{
+    outline: none;
+}
+#views form label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#views form > div {
+    text-align: center;
+}
+
+#views form #form1 label p{
+    margin-bottom: 3px;
+}
+#views form #form1 input{
+    text-align: center;
+}
+#views form #form2 label{
+    display: block;
+    text-align: end;
+}
+#views form #form2 #gender{
+    float: right;
+    padding-right: 20px;
+}
+#views form #form2 #gender label{
+    display: inline;
+    text-align: center;
+    margin: 15px;
+}
+
+#views form #form2 #Contacts{
     margin-top: 20px;
-    background-color: greenyellow;
+}
+#views form #form2 #Contacts .contact{
+    margin-bottom: 10px;
+}
+#views form #form2 #Contacts #controls{
+    display: flex;
+    justify-content: flex-end;
+}
+#views form #form2 #Contacts #controls input{
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    border-color: transparent;
+    border-radius: 100%;
+    font-size: 24px;
+    cursor: pointer;
+}
+#views form #form2 div p{
+    margin-bottom: 5px;
+}
+#views form #form2 div{
+    text-align: center;
+
+}
+input[type="submit"]{
+    width: 200px;
+    height: 30px;
+    font-weight: bolder;
+    color: #fff;
+    border-color: transparent;
+    background-color: var(--option-create);
+}
+#btn-delete{
+position: absolute;
+bottom: 80px;
+width: 430px;
+height: 40px;
+font-size: 18px;
+font-weight: bolder;
+color: #fff;
+border-color: transparent;
+background-color: var(--option-delete);
+cursor: pointer;
 }
 #Results{
-    display: flex;
-    justify-content: space-around;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 40px;
     border-top: 1px solid rgba(0, 0, 0, 0.26);
     padding-top: 35px;
-    padding-right: 60px;
+    padding-left: 50px;
     margin-top: 20px;
 }
 
 #Results details > summary{
-    display: inline;
-    width: 120px;
-    height: fit-content();
+    width: 110px;
     padding: 3.5px 8px 0px 8px;
     text-align: center;
     font-size: small;
@@ -134,7 +222,7 @@ form{
     content: '';
     display: block;
     width: calc(100% + 70px);
-    height: 110px;
+    height: 100px;
     border-radius: 8px;
     background-color: #e8e3e3;
 }
@@ -145,6 +233,9 @@ form{
 #Results details[open] > :not(summary){
     background-color: #e8e3e3;
     border-radius: 0 8px 8px 0;
+}
+#Results details[open]{
+    width: 330px;
 }
 #Results details > ul{
 

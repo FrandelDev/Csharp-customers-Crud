@@ -22,6 +22,7 @@ const postal = document.querySelector("#postal");
 const btnSend = document.querySelector("#btn-send");
 
 const url = "http://localhost:5001/api/Customer/" 
+form.addEventListener('submit',(event) => event.preventDefault());
 
 async function UpdateCustomer(){
   const customer = buildCostumer();
@@ -45,6 +46,7 @@ async function UpdateCustomer(){
             return;
         }
       });
+      btnSend.removeEventListener('click',UpdateCustomer);
       clear();
       form.reset();
       form.style.display = "none";
@@ -53,13 +55,14 @@ async function UpdateCustomer(){
   })
   .catch(error => console.error(error.message));
   CustomerRender(response.data,true);
-  btnSend.removeEventListener('click',UpdateCustomer);
+  
 }
 
 async function fillAllFields(event,id =  document.querySelector("#IdCardNumberInputGenerated").value){
   clear();
-  form.style.display = "block"
-
+  form.style.display = "grid";
+  document.querySelector('input[type="submit"]').style.backgroundColor = "var(--option-update)";
+  document.querySelector('input[type="submit"]').value += " Changes";
   btnSend.addEventListener('click',UpdateCustomer);
     
   const IdCardNumberInput = document.querySelector("#IdCardNumberInput")
@@ -86,7 +89,7 @@ async function fillAllFields(event,id =  document.querySelector("#IdCardNumberIn
     const contactInputList = document.querySelectorAll('.contact');
     if(contactInputList.length > customer.contacts.length){
       for(let i = contactInputList.length - customer.contacts.length; i >0; i--){
-      document.querySelector('#Contacts').removeChild(contactInputList[i]); 
+      document.querySelector('#contactGroup').removeChild(contactInputList[i]); 
       }
     }
     for(let i =0; i < customer.contacts.length; i++){
@@ -99,3 +102,4 @@ async function fillAllFields(event,id =  document.querySelector("#IdCardNumberIn
   }
   RenderSearchInput(btnUpdate,fillAllFields);
   
+  export {UpdateCustomer}

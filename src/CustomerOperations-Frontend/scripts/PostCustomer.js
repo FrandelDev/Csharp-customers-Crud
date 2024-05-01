@@ -1,8 +1,10 @@
 import {CustomerRender} from "./CustomerRender.js"
+import { UpdateCustomer } from "./UpdateCustomer.js";
 import { clear } from "./clear.js";
 
 const form = document.querySelector("form");
 const btnSend = document.querySelector("#btn-send");
+const contactGroup = document.querySelector("#contactGroup");
 const btnAdd = document.querySelector("#btn-add");
 const btnRest = document.querySelector("#btn-rest");
 const btnCreate = document.querySelector("#create");
@@ -44,8 +46,11 @@ const customerToSend ={
   form.addEventListener('submit',(event) => event.preventDefault());
 
   btnCreate.addEventListener('click',()=> {
+    btnSend.removeEventListener('click',UpdateCustomer);
   clear();
-  form.style.display = "block";
+  form.style.display = "grid";
+  document.querySelector('input[type="submit"]').style.backgroundColor = "var(--option-create)";
+  document.querySelector('input[type="submit"]').value = "Send";
   form.reset();
     btnSend.addEventListener('click',postCustomer);
   });
@@ -72,6 +77,7 @@ async function postCustomer(){
                         return;
                     }
                   });
+                  btnSend.removeEventListener('click',postCustomer);
                   clear();
                   form.reset();
                   return res.json();
@@ -82,20 +88,18 @@ async function postCustomer(){
           });
         
           CustomerRender(customer.data,true);
-
-        btnSend.removeEventListener('click',postCustomer);
     }
    
     
 btnAdd.addEventListener('click',addContact);
 function addContact(){
 
-    btnAdd.insertAdjacentHTML("beforebegin",`
+  contactGroup.insertAdjacentHTML("beforeend",`
     <div class="contact">
                 <label for="phone">
                     Phone Number:
                     <input type="tel" id="phone">
-                </label><br>
+                </label>
 
                 <label for="email">
                     E-mail:
@@ -108,12 +112,12 @@ function addContact(){
 btnRest.addEventListener('click',restContact);
 function restContact(){
     const contactInputList = document.querySelectorAll('.contact');
-    contactInputList.length > 1 ? document.querySelector('#Contacts').removeChild(contactInputList[1]) : '';
+    contactInputList.length > 1 ? document.querySelector('#contactGroup').lastElementChild.remove() : '';
 }
 
 function buildContactObjects(){
     const contactsSet = [];
-    const contactNodes = Array.from(document.querySelector("#Contacts").childNodes).filter(node => node.localName == 'div');
+    const contactNodes = Array.from(document.querySelector("#contactGroup").childNodes).filter(node => node.localName == 'div');
 
     contactNodes.forEach(node => {
          const phoneInputElement = node.querySelector('input[type="tel"]');

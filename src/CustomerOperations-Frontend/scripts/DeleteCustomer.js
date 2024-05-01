@@ -1,13 +1,14 @@
 import { CustomerRender, RenderSearchInput } from "./CustomerRender.js";
 import { clear } from "./clear.js";
+import { GetOneCustomer } from "./GetOneCustomer.js";
 
 const btnDelete = document.querySelector("#delete");
 
 const url = "http://localhost:5001/api/Customer/";
 
 async function DeleteCustomer(event, id = document.querySelector('#IdCardNumberInputGenerated').value){
-    
-   const response = await fetch(url + id,{
+   
+   await fetch(url + id,{
     method: "DELETE"
    })
    .then(res =>{
@@ -22,7 +23,12 @@ async function DeleteCustomer(event, id = document.querySelector('#IdCardNumberI
     }
    })
    .catch(error => console.error('Error: '+ error.message));
-   CustomerRender(response.data,true);
 }
-
-RenderSearchInput(btnDelete,DeleteCustomer)
+function confirmDelete(id = document.querySelector('#IdCardNumberInputGenerated').value){
+    GetOneCustomer(id)
+    document.querySelector('#Results').insertAdjacentHTML('beforeend',`
+    <input type="button" value="Delete this customer" id="btn-delete">
+    `);
+    document.querySelector('#btn-delete').addEventListener('click',DeleteCustomer);
+}
+RenderSearchInput(btnDelete,confirmDelete)
