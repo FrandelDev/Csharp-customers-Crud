@@ -10,6 +10,6 @@ test_proyect:
     before_script:
         - dotnet restore
     script:
-      - dotnet test
+      - dotnet test "./src/CustomerOperationsTests/CustomerOperationsTests.csproj"
 
         
