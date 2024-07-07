@@ -6,3 +6,5 @@
 /TestResults
 *.vspscc
 *.vssscc
+src/CustomerOperationsApi/Logs/
+launchSettings.json
